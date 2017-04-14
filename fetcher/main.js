@@ -2,7 +2,7 @@ module.exports = main
 
 var graph = require("fbgraph");
 var error = require("../utils/onerror");
-
+var pool = require("./fetchPool");
 function main(config, db) {
     var posts = db.collection("posts");
     graph.setAccessToken(config.graphToken);
@@ -47,6 +47,7 @@ function main(config, db) {
                     if (posts[i].message) {
                         if (posts[i].message.indexOf("#CIPP2017") > 0) {
                             InsertIfNotExist(posts[i].id);
+                            pool.add(posts[i].id, db.collection("post_details"))
                         }
                     }
                 }
