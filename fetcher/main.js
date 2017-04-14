@@ -2,7 +2,7 @@ module.exports = main
 
 var graph = require("fbgraph");
 var error = require("../utils/onerror");
-var pool = require("./fetchPool");
+var pool = require("./pool");
 function main(config, db) {
     var posts = db.collection("posts");
     graph.setAccessToken(config.graphToken);

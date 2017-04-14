@@ -2,7 +2,7 @@ var pool = [];
 var graph = require("fbgraph");
 var error = require("../utils/onerror");
 var config = require("../utils/config");
-
+var poolMon = {};
 graph.setAccessToken(config.graphToken);
 function postFetchById(id, posts) {
     return function () {
@@ -38,6 +38,10 @@ function updatePost(repo, post) {
 function add(id, repo) {
     pool.push({ id: id, interval: setInterval(postFetchById(id, repo), 1000) });
     console.log(`${id} add to pool`);
+    clearInterval(poolMon);
+    poolMon = setInterval(function(){
+        console.log(`post pool : ${pool.length}`);
+    }, 10000);
 }
 
 module.exports = {
