@@ -1,0 +1,11 @@
+{
+  "name": "psu-project-likes-fetcher",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fbgraph": "^1.4.1"
+  }
+}

@@ -1,5 +1,0 @@
-module.exports = {
-	"graphToken" : "EAAbS1kIlLUwBAPPDzf2rnMZCKHJM9DpeEWZCwngLh1V3YJ68W5I3vTajgESZChB8YElC207cTJbZAos7bNCm6w5ZBBeEfugFDr2ucYUzCKe1nV56hYviar7yQdEkdvq2FQYHPgiKwOjooP926qGO0RtvNHKTIQZCvZCz1zNz094xw6nrubsHMNh0AWWkHnrp8AZD",
-	"secret" : "bccc5655ee238576064f1ae79c731fae",
-	"clientId" : "1920667534830924",
-}
