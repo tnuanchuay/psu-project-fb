@@ -47,7 +47,7 @@ function main(config, db) {
                     if (posts[i].message) {
                         if (posts[i].message.indexOf("#CIPP2017") > 0) {
                             InsertIfNotExist(posts[i].id);
-                            pool.add(posts[i].id, db.collection("post_details"))
+                            pool.add(posts[i].id, db.collection("post_details"));
                         }
                     }
                 }
@@ -55,16 +55,16 @@ function main(config, db) {
     }
 
     function InsertIfNotExist(id) {
-        posts.find({post_id:id}).count((err, count)=>{
+        posts.find({ post_id: id }).count((err, count) => {
             error(err);
 
-            if(count === 0){
-                posts.insertOne({post_id:id});
+            if (count === 0) {
+                posts.insertOne({ post_id: id });
                 console.log(`post id : ${id} has been inserted`);
             }
         });
     }
-
+    extendToken();
     fetchPost();
     setInterval(fetchPost, 60000);
     setInterval(extendToken, 3600000);
