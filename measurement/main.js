@@ -8,3 +8,5 @@ module.exports = {
         help:"number of post count in facebook"
     })
 }
+
+client.listen(9095);
