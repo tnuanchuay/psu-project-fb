@@ -28,6 +28,7 @@ function main(config, db) {
             if (res.message) {
                 console.log(res.message)
             } else {
+                config.writeNewToken(res.access_token);
                 graph.setAccessToken(res.access_token);
             }
         });
@@ -64,6 +65,7 @@ function main(config, db) {
             }
         });
     }
+    
     extendToken();
     fetchPost();
     setInterval(fetchPost, 60000);

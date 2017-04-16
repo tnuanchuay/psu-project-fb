@@ -8,7 +8,7 @@ mongo.connect(`mongodb://${config.db.host}:${config.db.port}/${config.db.dbname}
         console.log(err);
         process.exit(1);
     }
-
+    //add your service here
     fetcher(config, db);
     api(config, db);
 });
