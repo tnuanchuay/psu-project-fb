@@ -6,6 +6,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "mongodb": "^2.2.25"
+    "mongodb": "^2.2.25",
+    "prom-client": "^8.0.0"
   }
 }
