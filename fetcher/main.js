@@ -3,9 +3,8 @@ module.exports = main
 var graph = require("fbgraph");
 var error = require("../utils/onerror");
 var pool = require("./pool");
-function main(config, db, prom) {
+function main(config, db, measurement) {
     var posts = db.collection("posts");
-    var postsMeasure = new prom.Counter('posts', 'count');
 
     graph.setAccessToken(config.graphToken);
 
@@ -51,7 +50,7 @@ function main(config, db, prom) {
                         if (posts[i].message.indexOf("#CIPP2017") > 0) {
                             InsertIfNotExist(posts[i].id);
                             pool.add(posts[i].id, db.collection("post_details"));
-                            postsMeasure.inc();
+                            measurement.posts.increment();
                         }
                     }
                 }
