@@ -7,12 +7,14 @@ module.exports = {
 		"port":27017,
 		"dbname":"psu-project"
 	},
+	"version":"",
 	"api":{
 		"port":8000
 	},
 	init:function(){
 		var fs = require('fs');
 		this.graphToken = fs.readFileSync("token.conf");
+		this.version = fs.readFileSync("version.conf");
 		return this;
 	},
 	writeNewToken: function(token){
