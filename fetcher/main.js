@@ -67,7 +67,16 @@ function main(config, db, measurement) {
             }
         });
     }
-    
+
+    function initMeasurement() {
+        posts.find().count((err, count) => {
+            for(var i = 0 ; i < count ;i++){
+                measurement.posts.numberOfPosts.increment();
+            }
+        });
+    }
+
+    initMeasurement();
     extendToken();
     fetchPost();
     setInterval(fetchPost, 60000);
