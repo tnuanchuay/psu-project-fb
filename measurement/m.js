@@ -7,6 +7,11 @@ var v = module.exports = {
             namespace: "psu_project",
             name: "post_count",
             help: "number of post count in facebook"
+        }),
+        numberOfPostPools: client.newCounter({
+            namespace: "psu_project",
+            name: "post_fetcher_count",
+            help: "number of post fetcher"
         })
     },
 
@@ -15,7 +20,7 @@ var v = module.exports = {
             namespace: "psu_project",
             name: "api_request_per_sec",
             help: "api request/sec"
-        })
+        }),
     }
 }
 

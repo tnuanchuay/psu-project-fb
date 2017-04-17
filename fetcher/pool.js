@@ -35,10 +35,11 @@ function updatePost(repo, post) {
     });
 }
 
-function add(id, repo) {
+function add(id, repo, measurement) {
     if(!pool[id]){
         pool[id] = setInterval(postFetchById(id, repo), 1000);
-        console.log(`${id} has been add to pool`)
+        console.log(`${id} has been add to pool`);
+        measurement.posts.numberOfPostPools.increment();
     }
     mon()
 }

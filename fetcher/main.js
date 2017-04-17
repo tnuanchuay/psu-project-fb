@@ -49,7 +49,7 @@ function main(config, db, measurement) {
                     if (posts[i].message) {
                         if (posts[i].message.indexOf("#CIPP2017") > 0) {
                             InsertIfNotExist(posts[i].id);
-                            pool.add(posts[i].id, db.collection("post_details"));
+                            pool.add(posts[i].id, db.collection("post_details"), measurement);
                         }
                     }
                 }
