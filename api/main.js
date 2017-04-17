@@ -10,6 +10,7 @@ function main(config, db, measurement){
 
     app.use(function(req, res, next){
         measurement.api.numberOfRequest.increment();
+        next();
     });
 
     app.use((req, res, next) => {
