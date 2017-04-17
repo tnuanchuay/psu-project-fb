@@ -5,8 +5,6 @@ var pool = require("./pool");
 function main(config, db, measurement, graph) {
     var posts = db.collection("posts");
 
-    
-
     function newTokenSession() {
         graph.extendAccessToken({
             "access_token": config.graphToken
