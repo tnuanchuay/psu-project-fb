@@ -62,7 +62,7 @@ function main(config, db, measurement) {
 
             if (count === 0) {
                 posts.insertOne({ post_id: id });
-                measurement.posts.increment();
+                measurement.posts.numberOfPosts.increment();
                 console.log(`post id : ${id} has been inserted`);
             }
         });

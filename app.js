@@ -11,5 +11,5 @@ mongo.connect(`mongodb://${config.db.host}:${config.db.port}/${config.db.dbname}
     }
     //add your service here
     fetcher(config, db, measurement);
-    api(config, db);
+    api(config, db, measurement);
 });

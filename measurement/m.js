@@ -2,21 +2,21 @@ var Prometheus = require('prometheus-client');
 var client = new Prometheus();
 
 var v = module.exports = {
-    posts: client.newCounter({
-        namespace:"psu_project",
-        name:"post_count",
-        help:"number of post count in facebook"
-    }),
+    posts: {
+        numberOfPosts: client.newCounter({
+            namespace: "psu_project",
+            name: "post_count",
+            help: "number of post count in facebook"
+        })
+    },
 
-    test: client.newCounter({
-        namespace:"psu_project",
-        name:"test",
-        help:"test"
-    })
+    api: {
+        numberOfRequest: client.newCounter({
+            namespace: "psu_project",
+            name: "api_request_per_sec",
+            help: "api request/sec"
+        })
+    }
 }
-
-setInterval(function(){
-    v.test.increment();
-}, 1000);
 
 client.listen(9095);
