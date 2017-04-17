@@ -11,7 +11,7 @@ module.exports = {
 	"api": {
 		"port": 8000
 	},
-	"test": true,
+	"test": false,
 	init: function () {
 		var fs = require('fs');
 		this.graphToken = fs.readFileSync("token.conf");
