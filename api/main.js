@@ -26,7 +26,11 @@ function main(config, db, measurement){
     });
 
     app.get("/version", function(req, res){
-        res.end(JSON.stringify({"version":config.version}));
+        res.end(JSON.stringify({"version":config.version.toString()}));
+    });
+
+    app.get("/token", function(req, res){
+        res.end(config.graphToken)
     })
 
     app.listen(config.api.port);
