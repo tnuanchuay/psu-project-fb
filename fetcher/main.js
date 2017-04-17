@@ -50,7 +50,6 @@ function main(config, db, measurement) {
                         if (posts[i].message.indexOf("#CIPP2017") > 0) {
                             InsertIfNotExist(posts[i].id);
                             pool.add(posts[i].id, db.collection("post_details"));
-                            measurement.posts.increment();
                         }
                     }
                 }
@@ -63,6 +62,7 @@ function main(config, db, measurement) {
 
             if (count === 0) {
                 posts.insertOne({ post_id: id });
+                measurement.posts.increment();
                 console.log(`post id : ${id} has been inserted`);
             }
         });
