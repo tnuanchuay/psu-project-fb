@@ -1,12 +1,11 @@
 module.exports = main
 
-var graph = require("fbgraph");
 var error = require("../utils/onerror");
 var pool = require("./pool");
-function main(config, db, measurement) {
+function main(config, db, measurement, graph) {
     var posts = db.collection("posts");
 
-    graph.setAccessToken(config.graphToken);
+    
 
     function newTokenSession() {
         graph.extendAccessToken({

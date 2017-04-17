@@ -16,13 +16,17 @@ function main(config, db, measurement){
     app.use((req, res, next) => {
         res.type("json");
         next();
-    })
+    });
 
     app.get("/posts", function(req, res){
         detail.find({}).toArray((err, array)=>{
             error(err);
             res.end(JSON.stringify(array));
         })
+    });
+
+    app.get("/version", function(req, res){
+        res.end("version");
     })
 
     app.listen(config.api.port);
