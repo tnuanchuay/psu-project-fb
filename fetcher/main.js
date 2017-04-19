@@ -33,7 +33,7 @@ function main(config, db, measurement, graph) {
     }
 
     function fetchPost() {
-        graph.get("1834630993529478/posts?fields=message,id"
+        graph.get("1834630993529478/posts?fields=message,id&limit=100"
             , function (err, res) {
                 error(err);
 
@@ -80,4 +80,3 @@ function main(config, db, measurement, graph) {
     setInterval(extendToken, 3600000);
 
 }
-
