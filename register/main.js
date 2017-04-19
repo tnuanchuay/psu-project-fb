@@ -17,7 +17,17 @@ app.post("/post", function(req, res){
 	var pjname = checkEmpty(req.body.pjname);
 	var youtubeLink = checkEmpty(req.body.link);
 
-	var postbody = `${stdId} ${fullname} (www.facebook.com/${fbtag}) ${faculty}<br>`;
+	if(fbtag.indexOf(",") > 0){
+		var tags = fbtag.split(",");
+		fbtag = ""
+		for(var i = 0 ; i < tags.length ; i++){
+				fbtag += `www.facebook.com/${tags[i].trim()} `;
+		}
+	}else{
+		fbtag = `www.facebook.com/${fbtag}`;
+	}
+
+	var postbody = `${stdId} ${fullname} (${fbtag}) ${faculty}<br>`;
 	var pjandHashtag = `โครงงาน: ${pjname} #CIPP2017<br>`
 
 	ifttt.send('project', youtubeLink, postbody, pjandHashtag)
