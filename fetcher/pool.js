@@ -56,7 +56,7 @@ function mon() {
     clearInterval(poolMon);
     poolMon = setInterval(function () {
         console.log(`post pool : ${Object.keys(pool).length}`);
-    }, 10000);
+    }, 30000);
 }
 
 mon();
