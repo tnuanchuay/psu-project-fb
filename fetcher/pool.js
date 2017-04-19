@@ -45,7 +45,7 @@ function updatePost(repo, post) {
 
 function add(id, repo, measurement) {
     if(!pool[id]){
-        pool[id] = setInterval(postFetchById(id, repo), 1000);
+        pool[id] = setInterval(postFetchById(id, repo), 10000);
         console.log(`${id} has been add to pool`);
         measurement.posts.numberOfPostPools.increment();
     }
