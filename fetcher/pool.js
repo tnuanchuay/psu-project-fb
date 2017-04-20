@@ -7,7 +7,7 @@ graph.setAccessToken(config.graphToken);
 function postFetchById(id, posts) {
     return function () {
         graph.get(
-            `${id}?fields=message,picture,reactions.type(LIKE).limit(0).summary(total_count).as(LIKE),reactions.type(LOVE).limit(0).summary(total_count).as(LOVE),reactions.type(WOW).limit(0).summary(total_count).as(WOW),reactions.type(HAHA).limit(0).summary(total_count).as(HAHA),reactions.type(SAD).limit(0).summary(total_count).as(SAD),reactions.type(ANGRY).limit(0).summary(total_count).as(ANGRY)`
+            `${id}?fields=shares,message,picture,reactions.type(LIKE).limit(0).summary(total_count).as(LIKE),reactions.type(LOVE).limit(0).summary(total_count).as(LOVE),reactions.type(WOW).limit(0).summary(total_count).as(WOW),reactions.type(HAHA).limit(0).summary(total_count).as(HAHA),reactions.type(SAD).limit(0).summary(total_count).as(SAD),reactions.type(ANGRY).limit(0).summary(total_count).as(ANGRY)`
             , function (err, data) {
                 error(err);
 
@@ -24,6 +24,7 @@ function postFetchById(id, posts) {
                     HAHA: data.HAHA.summary.total_count,
                     SAD: data.SAD.summary.total_count,
                     ANGRY: data.ANGRY.summary.total_count,
+                    SHARE: data.shares.count;
                     permalink_url: (plink+postId)
                 }
 
