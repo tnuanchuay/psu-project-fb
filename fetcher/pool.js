@@ -14,6 +14,10 @@ function postFetchById(id, posts) {
                 var postModel = {};
                 var plink = "https://www.facebook.com/cipp2017/posts/";
                 var postId = itToPostId(data.id);
+                var shareCount = 0;
+                if(data.shares){
+                    shareCount = data.shares.count;
+                }
                 postModel = {
                     id: data.id,
                     message: data.message,
@@ -24,7 +28,7 @@ function postFetchById(id, posts) {
                     HAHA: data.HAHA.summary.total_count,
                     SAD: data.SAD.summary.total_count,
                     ANGRY: data.ANGRY.summary.total_count,
-                    SHARE: data.shares.count,
+                    SHARE: shareCount,
                     permalink_url: (plink+postId)
                 }
 
