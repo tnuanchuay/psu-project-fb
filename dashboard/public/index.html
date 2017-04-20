@@ -40,19 +40,14 @@
 	<script>
 		var namespace = angular.module("app", [])
 			.controller("dashboard", function($scope, $http){
-				$http({
-					method: "GET",
-					url: "http://coepkt.org:8000/posts",
-				}).then(function(success){
-					$scope.data = success.data;
-					for(var i = 0 ; i < $scope.data.length ; i++){
-						if(!$scope.data[i].SHARE){
-							$scope.data[i].SHARE = 0;
-						}
-
-						$scope.data[i].score = $scope.data[i].LIKE + $scope.data[i].HAHA + $scope.data[i].WOW + $scope.data[i].LOVE + ($scope.data[i].SHARE * 3);
-					}
-				});
+				setInterval(function(){
+					$http({
+						method: "GET",
+						url: "http://coepkt.org:8000/posts",
+					}).then(function(success){
+						$scope.data = success.data;
+					});
+				}, 10000);
 
 				$scope.order = function(predicate) {
                         $scope.reverse=($scope.predicate === predicate) ? !$scope.reverse : false;

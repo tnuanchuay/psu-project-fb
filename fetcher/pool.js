@@ -18,6 +18,8 @@ function postFetchById(id, posts) {
                 if(data.shares){
                     shareCount = data.shares.count;
                 }
+
+                var score = data.LIKE.summary.total_count + data.LOVE.summary.total_count + data.WOW.summary.total_count + data.HAHA.summary.total_count + (shareCount * 2);
                 postModel = {
                     id: data.id,
                     message: data.message,
@@ -29,7 +31,8 @@ function postFetchById(id, posts) {
                     SAD: data.SAD.summary.total_count,
                     ANGRY: data.ANGRY.summary.total_count,
                     SHARE: shareCount,
-                    permalink_url: (plink+postId)
+                    permalink_url: (plink+postId),
+                    score: score
                 }
 
                 updatePost(posts, postModel);
