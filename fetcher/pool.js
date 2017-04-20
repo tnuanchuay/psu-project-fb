@@ -24,7 +24,7 @@ function postFetchById(id, posts) {
                     HAHA: data.HAHA.summary.total_count,
                     SAD: data.SAD.summary.total_count,
                     ANGRY: data.ANGRY.summary.total_count,
-                    SHARE: data.shares.count
+                    SHARE: data.shares.count,
                     permalink_url: (plink+postId)
                 }
 
