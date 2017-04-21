@@ -22,7 +22,7 @@
 				</thead>
 				<tbody>
 					<tr ng-repeat="item in (data | filter:search:strict | orderBy:predicate:reverse)">
-						<td>{{item.message}}</td>
+						<td><a href="{{item.permalink_url}}">{{item.message}}</a></td>
 						<td>{{item.LIKE}}</td>
 						<td>{{item.LOVE}}</td>
 						<td>{{item.WOW}}</td>
@@ -40,6 +40,14 @@
 	<script>
 		var namespace = angular.module("app", [])
 			.controller("dashboard", function($scope, $http){
+
+				$http({
+					method: "GET",
+					url: "http://coepkt.org:8000/posts",
+				}).then(function(success){
+					$scope.data = success.data;
+				});
+
 				setInterval(function(){
 					$http({
 						method: "GET",
