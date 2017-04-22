@@ -2,35 +2,41 @@
 	<head>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 	</head>
 	<body ng-app="app">
 		<div ng-controller="dashboard" class="container">
-			<input type="text" placeholder="Search by Message" class="form-control" ng-model="search.message">
+			 <h1>Senior Project Show Case CoE-ICT 2017</h1>
 			<table class="table .table-striped .table-hover">
 				<thead>
 					<tr>
-						<td>Project</td>
-						<td ng-click="order('LIKE')">Like</td>
-						<td ng-click="order('LOVE')">Love</td>
-						<td ng-click="order('WOW')">Wow</td>
-						<td ng-click="order('HAHA')">Haha</td>
-						<td ng-click="order('SAD')">Sad</td>
-						<td ng-click="order('ANGRY')">Angry</td>
-						<td ng-click="order('SHARE')">Share</td>
-						<td ng-click="order('score')">Score</td>
+						<td> </td>
+						<td ng-click="order('message')"  style="vertical-align:bottom">Project
+							<span class="glyphicon glyphicon glyphicon-search" aria-hidden="true"></span> 
+							<input type="text" placeholder="" class="form-inline" ng-model="search.message">
+						</td>
+						<td ng-click="order('LIKE')"><image src="./images/fb-like.gif" width="40"></td>
+						<td ng-click="order('LOVE')"><image src="./images/fb-heart.gif" width="40"></td>
+						<td ng-click="order('WOW')"><image src="./images/fb-wow.gif" width="40"></td>
+						<td ng-click="order('HAHA')"><image src="./images/fb-laugh.gif" width="40"></td>
+						<td ng-click="order('SAD')"><image src="./images/fb-sad.gif" width="40"></td>
+						<td ng-click="order('ANGRY')"><image src="./images/fb-angry.gif" width="40"></td>
+						<td ng-click="order('SHARE')"><image src="./images/fb-share.gif" width="38" </td>
+						<td ng-click="order('score')"><image src="./images/fb-score.gif" width="38" alt="total score"></td>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody>			
 					<tr ng-repeat="item in (data | filter:search:strict | orderBy:predicate:reverse)">
-						<td><a href="{{item.permalink_url}}">{{item.message}}</a></td>
-						<td>{{item.LIKE}}</td>
-						<td>{{item.LOVE}}</td>
-						<td>{{item.WOW}}</td>
-						<td>{{item.HAHA}}</td>
-						<td>{{item.SAD}}</td>
-						<td>{{item.ANGRY}}</td>
-						<td>{{item.SHARE}}</td>
-						<td>{{item.score}}</td>
+						<td>{{$index+1}}</td>
+						<td><a href="{{item.permalink_url}}"> {{item.message}} </a></td>
+						<td align="center">{{item.LIKE}}</td>
+						<td align="center">{{item.LOVE}}</td>
+						<td align="center">{{item.WOW}}</td>
+						<td align="center">{{item.HAHA}}</td>
+						<td align="center">{{item.SAD}}</td>
+						<td align="center">{{item.ANGRY}}</td>
+						<td align="center">{{item.SHARE}}</td>
+						<td align="center">{{item.score}}</td>
 					</tr>
 				</tbody>
 			</table>
@@ -39,19 +45,22 @@
 	<script src="/angular.min.js"></script>
 	<script>
 		var namespace = angular.module("app", [])
-			.controller("dashboard", function($scope, $http){
-
+			.controller("dashboard", function($scope, $http){					
+				 
 				$http({
 					method: "GET",
 					url: "http://coepkt.org:8000/posts",
+					// url: "http://localhost:8000/posts",
 				}).then(function(success){
 					$scope.data = success.data;
 				});
+				  
 
 				setInterval(function(){
 					$http({
 						method: "GET",
 						url: "http://coepkt.org:8000/posts",
+						// url: "http://localhost:8000/posts",
 					}).then(function(success){
 						$scope.data = success.data;
 					});
