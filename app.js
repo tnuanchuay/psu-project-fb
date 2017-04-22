@@ -17,5 +17,9 @@ mongo.connect(`mongodb://${config.db.host}:${config.db.port}/${config.db.dbname}
     api(config, db, measurement);
     visitorPost(config, db);
 
-    measurement.main(db);
+    var startmeasurement = setInterval(function(){
+            measurement.main(db);
+            clearInterval(startmeasurement);
+    }, 30000);
+
 });
