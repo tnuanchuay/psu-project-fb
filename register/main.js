@@ -1,4 +1,4 @@
-var ifttt = require("iftttmaker")("3ZxGpya4UVbwPd836Kf_p");
+var ifttt = require("iftttmaker")();
 var express = require("express");
 var bodyParser = require("body-parser");
 
